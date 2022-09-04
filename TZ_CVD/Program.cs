@@ -13,7 +13,7 @@ using (ApplicationContext db = new ApplicationContext())
         .Select(e => e.ChiefId)
         .Distinct()
         .ToList();
-
+    //Создание списков для заполнения
     List<Employee> chief = new();
     List<Employee> employee = new();
 
@@ -79,20 +79,22 @@ using (ApplicationContext db = new ApplicationContext())
 
     Console.WriteLine(str);
     Console.WriteLine("Зарплаты руководителей департаментов (по убыванию)");
-    //var result = viewListEmpl(empo, сhief);
     chief.Reverse();
-
+    
     foreach (var item in chief)
     {
         Console.WriteLine($"{item.Name} - {item.Salary}");
     }
 
-    // Функция для получения руководителей и подчиненых
-    void viewEmployeeList(List<Employee> oneList, List<int?> twoList, out List<Employee> outEmplList, out List<Employee> outChiefList)
+
+    void viewEmployeeList(List<Employee> oneList, List<int?> twoList, 
+        out List<Employee> outEmplList, out List<Employee> outChiefList
+        )
     {
         List<Employee> returnChiefList = new List<Employee>();
         List<Employee> returnEmplList = new List<Employee>();
         int count = 0;
+        
         for (int i = 0; i < oneList.Count; i++)
         {
             for (int j = 0; j < twoList.Count; j++)
