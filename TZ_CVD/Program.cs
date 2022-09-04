@@ -14,8 +14,8 @@ using (ApplicationContext db = new ApplicationContext())
         .Distinct()
         .ToList();
 
-    List<Employee> chief = new List<Employee>();
-    List<Employee> employee = new List<Employee>();
+    List<Employee> chief = new();
+    List<Employee> employee = new();
 
     viewEmployeeList(empo, chiefId, out chief, out employee);
 
@@ -88,7 +88,7 @@ using (ApplicationContext db = new ApplicationContext())
     }
 
     // Функция для получения руководителей и подчиненых
-    void viewEmployeeList(List<Employee> oneList, List<int?> twoList, out List<Employee> outOneList, out List<Employee> outTwoList)
+    void viewEmployeeList(List<Employee> oneList, List<int?> twoList, out List<Employee> outEmplList, out List<Employee> outChiefList)
     {
         List<Employee> returnChiefList = new List<Employee>();
         List<Employee> returnEmplList = new List<Employee>();
@@ -114,8 +114,8 @@ using (ApplicationContext db = new ApplicationContext())
             count = 0;
         }
 
-        outOneList = returnEmplList;
-        outTwoList = returnChiefList;
+        outEmplList = returnEmplList;
+        outChiefList = returnChiefList;
     }
 }
 
